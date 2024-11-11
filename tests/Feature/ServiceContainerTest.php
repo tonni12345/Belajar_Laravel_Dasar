@@ -4,7 +4,10 @@ namespace Tests\Feature;
 
 use App\Data\Foo;
 use Tests\TestCase;
+use App\Data\Person;
 use Illuminate\Foundation\Testing\WithFaker;
+
+use function PHPUnit\Framework\assertNotNull;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class ServiceContainerTest extends TestCase
@@ -19,5 +22,14 @@ class ServiceContainerTest extends TestCase
         self::assertEquals("Foo", $foo1->foo());
         self::assertEquals("Foo", $foo2->foo());
         self::assertNotSame($foo1, $foo2);
+    }
+
+    public function testBind(){
+        $this->app->bind(Person::class, function($app){
+            return new Person("Tonni", "Ramdani");
+        });
+
+        $person = $this->app->make(Person::class);
+        assertNotNull($person);
     }
 }
