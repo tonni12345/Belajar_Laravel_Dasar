@@ -30,6 +30,13 @@ class ServiceContainerTest extends TestCase
         });
 
         $person = $this->app->make(Person::class);
-        assertNotNull($person);
+
+        $person1 = $this->app->make(Person::class);
+        $person2 = $this->app->make(Person::class);
+
+        
+        self::assertNotNull($person);
+        self::assertEquals("Tonni", $person1->firstName);
+        self::assertEquals("Ramdani", $person->lastName);
     }
 }
