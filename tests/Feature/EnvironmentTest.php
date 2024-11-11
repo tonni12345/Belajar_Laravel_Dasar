@@ -12,10 +12,10 @@ class EnvironmentTest extends TestCase
     public function testGetEnv(){
 
         // cara mengambil nilai dari environment os, sayangnya saya menggunakan windows jadi mungkin berbeda.
-        // $youtube = env('YOUTUBE');
+        $youtube = env('YOUTUBE');
 
         // cara mengambil dari .env laravel, ternyta sama saja cara nyarinya. mungkin jika tidak ada di .env trus nyari ke env di operasi sistem
-        $youtube = env("YOUTUBE");
+        // $youtube = env('YOUTUBE');
 
         self::assertEquals("Programmer Zaman Now", $youtube);
     }
@@ -27,7 +27,7 @@ class EnvironmentTest extends TestCase
         //  menggunakan class dan static method
         $author = Env::get('AUTHOR', "Tonni Ramdani");
 
-         self::assertEquals("Tonni Ramdani", $author);
+        self::assertEquals("Tonni Ramdani", $author);
 
 
     }
