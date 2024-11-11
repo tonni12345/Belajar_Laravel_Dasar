@@ -25,6 +25,7 @@ class ServiceContainerTest extends TestCase
     }
 
     public function testBind(){
+        // memberitahu kalau membuat object person tuh harus kayak gini
         $this->app->bind(Person::class, function($app){
             return new Person("Tonni", "Ramdani");
         });
@@ -38,5 +39,19 @@ class ServiceContainerTest extends TestCase
         self::assertNotNull($person);
         self::assertEquals("Tonni", $person1->firstName);
         self::assertEquals("Ramdani", $person->lastName);
+        self::assertNotSame($person1, $person2);
+    }
+
+    public function testSingleton(){
+        $this->app->singleton(Person::class, function($app){
+            return new Person("Tonni", "Ramdani");
+        });
+
+        $person1 = $this->app->make(Person::class); 
+        $person2 = $this->app->make(Person::class); // object yang sama dengan yang atas
+
+        self::assertSame($person1, $person2);
+        self::assertEquals("Tonni", $person1->firstName);
+        self::assertEquals("Ramdani", $person2->lastName);
     }
 }
