@@ -79,9 +79,12 @@ class ServiceContainerTest extends TestCase
 
         $foo = $this->app->make(Foo::class);
         $bar = $this->app->make(Bar::class); //secara otomatisi mencocokkan dependency yang ada pada service container(app)
+
+        // jika tidak ada pengenalan pada service container itu juga akan otomatis di inject namun objectnya selalu baru
         
         self::assertEquals("Foo and Bar", $bar->bar());
         self::assertEquals("Foo", $foo->foo());
+        self::assertSame($foo, $bar->foo);
         
     }
 }
