@@ -7,6 +7,8 @@ use App\Data\Foo;
 use Tests\TestCase;
 use App\Data\Person;
 
+use App\Services\HelloService;
+use App\Services\HelloServiceIndonesia;
 use Illuminate\Foundation\Testing\WithFaker;
 use function PHPUnit\Framework\assertNotNull;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -77,14 +79,31 @@ class ServiceContainerTest extends TestCase
             return new Foo();
         });
 
+        $this->app->singleton(Bar::class, function($app){
+            return new Bar($app->make(Foo::class));
+        });
+
         $foo = $this->app->make(Foo::class);
-        $bar = $this->app->make(Bar::class); //secara otomatisi mencocokkan dependency yang ada pada service container(app)
+        $bar1 = $this->app->make(Bar::class); //secara otomatisi mencocokkan dependency yang ada pada service container(app)
+        $bar2 = $this->app->make(Bar::class);
 
         // jika tidak ada pengenalan pada service container itu juga akan otomatis di inject namun objectnya selalu baru
         
-        self::assertEquals("Foo and Bar", $bar->bar());
+        self::assertEquals("Foo and Bar", $bar1->bar());
         self::assertEquals("Foo", $foo->foo());
-        self::assertSame($foo, $bar->foo);
-        
+        self::assertSame($foo, $bar1->foo);
+
+        // self::assertNotSame($bar1, $bar2); //ini object yang berbeda sebelum membuat singleton pada kelas bar
+        self::assertSame($bar1, $bar2);
+    }
+
+    public function testHelloService(){
+        // melakukan binding interface
+        $this->app->singleton(HelloService::class, HelloServiceIndonesia::class);
+
+        // ketika kita make interface make yang dipanggilnya yang ngeimplementasinya, karena interface tidak bisa di instalsiasi
+        $helloService = $this->app->make(HelloService::class);
+
+        self::assertEquals("Hallo Tonni", $helloService->hello("Tonni"));
     }
 }
