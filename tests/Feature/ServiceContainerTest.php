@@ -2,11 +2,12 @@
 
 namespace Tests\Feature;
 
+use App\Data\Bar;
 use App\Data\Foo;
 use Tests\TestCase;
 use App\Data\Person;
-use Illuminate\Foundation\Testing\WithFaker;
 
+use Illuminate\Foundation\Testing\WithFaker;
 use function PHPUnit\Framework\assertNotNull;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
@@ -53,5 +54,34 @@ class ServiceContainerTest extends TestCase
         self::assertSame($person1, $person2);
         self::assertEquals("Tonni", $person1->firstName);
         self::assertEquals("Ramdani", $person2->lastName);
+    }
+
+    public function testInstance(){
+
+        $person = new Person("Nadyra Riak", "Pasifica");
+        $this->app->instance(Person::class, $person);
+
+        $person1 = $this->app->make(Person::class); 
+        $person2 = $this->app->make(Person::class);
+
+        self::assertEquals("Nadyra Riak", $person->firstName);
+        self::assertEquals("Pasifica", $person1->lastName);
+        self::assertSame($person, $person1);
+        self::assertSame($person1, $person2);
+        self::assertSame($person, $person2);
+        
+    }
+
+    public function testDependencyInjectionServiceContainer(){
+        $this->app->singleton(Foo::class, function($app){
+            return new Foo();
+        });
+
+        $foo = $this->app->make(Foo::class);
+        $bar = $this->app->make(Bar::class); //secara otomatisi mencocokkan dependency yang ada pada service container(app)
+        
+        self::assertEquals("Foo and Bar", $bar->bar());
+        self::assertEquals("Foo", $foo->foo());
+        
     }
 }
