@@ -99,6 +99,7 @@ class ServiceContainerTest extends TestCase
 
     public function testHelloService(){
         // melakukan binding interface
+        // $this->app->bind(HelloService::class, HelloServiceIndonesia::class);
         $this->app->singleton(HelloService::class, HelloServiceIndonesia::class);
 
         // ketika kita make interface make yang dipanggilnya yang ngeimplementasinya, karena interface tidak bisa di instalsiasi
