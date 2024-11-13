@@ -39,4 +39,8 @@ class ServiceProviderTest extends TestCase
 
         self::assertSame($helloService1, $helloService2);
     }
+
+    public function testEmpty(){
+        self::assertTrue(true);
+    }
 }
