@@ -18,6 +18,7 @@ class FacadesTest extends TestCase
 
         self::assertEquals($firstName, $firstName1);
 
+        // print semua config
         var_dump(Config::all());
     }
 }
