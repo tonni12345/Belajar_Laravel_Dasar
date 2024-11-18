@@ -3,6 +3,9 @@
 namespace Tests\Feature;
 
 use Tests\TestCase;
+use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -35,9 +38,14 @@ class FacadesTest extends TestCase
         self::assertEquals($firstName3, $firstName1);
     }
 
-    public function testConfigMock(){
+    public function testFacadesMock(){
         // mocking test adalah teknik pengujian perangkat lunak yang menggunakan objek tiruan untuk menggantikan object asli
+        // contoh, semua facades ada should receivenya
+        Log::shouldReceive();
+        App::shouldReceive();
+        Crypt::shouldReceive();
         Config::shouldReceive('get')
+            // parameter 
             ->with('contoh.author.first')
             ->andReturn("Tonni gg");
         
