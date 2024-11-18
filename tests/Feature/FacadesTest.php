@@ -21,4 +21,18 @@ class FacadesTest extends TestCase
         // print semua config
         var_dump(Config::all());
     }
+
+    public function testConfigDependency(){
+        // menggunakan service container
+        $config = $this->app->make("config");
+        $firstName3 = $config->get("contoh.author.first");
+        
+        // menggunkanan helper function
+        $firstName1 = config("contoh.author.first");
+        // menggunakan facades
+        $firstName2 = Config::get("contoh.author.first");
+
+        self::assertEquals($firstName3, $firstName1);
+
+    }
 }
