@@ -33,6 +33,16 @@ class FacadesTest extends TestCase
         $firstName2 = Config::get("contoh.author.first");
 
         self::assertEquals($firstName3, $firstName1);
+    }
 
+    public function testConfigMock(){
+        // mocking test adalah teknik pengujian perangkat lunak yang menggunakan objek tiruan untuk menggantikan object asli
+        Config::shouldReceive('get')
+            ->with('contoh.author.first')
+            ->andReturn("Tonni gg");
+        
+        $firstName = Config::get("contoh.author.first");
+
+        self::assertEquals("Tonni gg", $firstName);
     }
 }
