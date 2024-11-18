@@ -18,5 +18,5 @@ Route::get('/', function () {
 });
 
 Route::get('/pzn', function(){
-    return "programmer zaman now";
+    return "Hello Programmer Zaman Now";
 });
