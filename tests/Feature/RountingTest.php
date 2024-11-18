@@ -19,4 +19,8 @@ class RountingTest extends TestCase
     public function testRedirectRouting(){
         $this->get("/youtube")->assertRedirect("/pzn");
     }
+
+    public function testFallBack(){
+        $this->get("/404")->assertSeeText("404");
+    }
 }

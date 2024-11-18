@@ -22,3 +22,7 @@ Route::get('/pzn', function(){
 });
 
 Route::redirect('/youtube', '/pzn');
+
+Route::fallback(function(){
+    return "404";
+});
