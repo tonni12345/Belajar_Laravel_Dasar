@@ -21,6 +21,8 @@ class RountingTest extends TestCase
     }
 
     public function testFallBack(){
-        $this->get("/404")->assertSeeText("404");
+        $this->get("/tidakada")->assertSeeText("404");
+        $this->get("/oops")->assertSeeText("404");
+        $this->get("/oalah")->assertSeeText("404");
     }
 }
