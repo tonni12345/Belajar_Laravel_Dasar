@@ -20,3 +20,5 @@ Route::get('/', function () {
 Route::get('/pzn', function(){
     return "Hello Programmer Zaman Now";
 });
+
+Route::redirect('/youtube', '/pzn');
