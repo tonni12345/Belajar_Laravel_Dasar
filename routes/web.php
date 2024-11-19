@@ -26,3 +26,13 @@ Route::redirect('/youtube', '/pzn');
 Route::fallback(function(){
     return "404";
 });
+
+
+// bisa seperti ini 
+// Route::view('/hello', 'hello', ['name' => 'Eko']);
+
+// atau ini
+Route::get('/hello', function(){
+    $names['name'] = "Tonni";
+    return view('hello', $names);
+});
