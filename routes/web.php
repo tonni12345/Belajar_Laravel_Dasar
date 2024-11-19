@@ -36,3 +36,7 @@ Route::get('/hello', function(){
     $names['name'] = "Tonni";
     return view('hello', $names);
 });
+
+Route::get('/hello-again', function(){
+    return view('hello', ['name' => 'Foo']);
+});
