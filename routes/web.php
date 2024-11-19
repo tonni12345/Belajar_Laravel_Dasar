@@ -40,3 +40,7 @@ Route::get('/hello', function(){
 Route::get('/hello-again', function(){
     return view('hello', ['name' => 'Foo']);
 });
+
+Route::get('/hello-world', function(){
+    return view('hello.world', ['name' => 'Kareen']);
+});
