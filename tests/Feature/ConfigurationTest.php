@@ -19,6 +19,6 @@ class ConfigurationTest extends TestCase
         self::assertEquals("tonniramdani@gmail.com", $email);
         self::assertEquals("https://github.com/tonni12345", $web);
 
-        
+    
     }
 }

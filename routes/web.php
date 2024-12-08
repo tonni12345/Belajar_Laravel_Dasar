@@ -24,7 +24,7 @@ Route::get('/pzn', function(){
 Route::redirect('/youtube', '/pzn');
 
 Route::fallback(function(){
-    return "404";
+    return "404 halaman tidak ada";
 });
 
 
