@@ -44,3 +44,13 @@ Route::get('/hello-again', function(){
 Route::get('/hello-world', function(){
     return view('hello.world', ['name' => 'Kareen']);
 });
+
+Route::get('products/{id}', function($productId){
+    return "product $productId";
+});
+
+Route::get('products/{product}/items/{item}', function($productId, $itemId){
+    return "product $productId, Item $itemId";
+});
+
+

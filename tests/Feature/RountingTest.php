@@ -25,4 +25,14 @@ class RountingTest extends TestCase
         $this->get("/oops")->assertSeeText("404");
         $this->get("/oalah")->assertSeeText("404");
     }
+
+    public function testRouteParameter(){
+        $this->get('/products/1')->assertSeeText('product 1');
+
+        $this->get('/products/2')->assertSeeText('product 2');
+
+
+        $this->get('products/1/items/yyy')->assertSeeText('product 1, Item yyy');
+
+    }
 }
