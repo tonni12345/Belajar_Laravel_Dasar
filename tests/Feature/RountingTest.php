@@ -48,4 +48,10 @@ class RountingTest extends TestCase
         $this->get('/users/toni')->assertSeeText('Users : toni');
     }
 
+
+    public function testConflictParameterRoute(){
+        //$this->get('/conflict/toni')->assertSeeText("Conflict toni ramdani"); // terjadi conflict route paramater karena yang ini berada di bawah route /conflict/{name}
+        $this->get('/conflict/toni')->assertSeeText("Conflict toni");
+    }
+
 }

@@ -62,3 +62,11 @@ Route::get('/users/{id?}', function($userId = '404'){
     return "Users : $userId";
 });
 
+Route::get('/conflict/{name}', function($name){
+    return "Conflict $name";
+});
+
+Route::get('/conflict/toni', function(){
+    return "Conflict toni ramdani";
+});
+
