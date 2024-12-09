@@ -18,4 +18,11 @@ class InputController extends Controller
 
         return "Hello $firstName";
     }
+
+    public function helloInput(Request $request): string
+    {
+        $input = $request->input(); // method input tanpa parameter
+
+        return json_encode($input);
+    }
 }
