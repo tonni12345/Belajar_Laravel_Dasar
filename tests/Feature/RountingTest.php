@@ -54,4 +54,11 @@ class RountingTest extends TestCase
         $this->get('/conflict/toni')->assertSeeText("Conflict toni");
     }
 
+    public function testNamedRoute(){
+        $this->get('/produk/123')->assertSeeText('Link http://localhost/products/123');
+
+        $this->get('/produk-redirect/123')->assertRedirect('/products/123');
+    
+    }
+
 }

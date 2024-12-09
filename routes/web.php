@@ -47,11 +47,11 @@ Route::get('/hello-world', function(){
 
 Route::get('products/{id}', function($productId){
     return "product $productId";
-});
+})->name('product.detail');
 
 Route::get('products/{product}/items/{item}', function($productId, $itemId){
     return "product $productId, Item $itemId";
-});
+})->name('product.item.detail');
 
 Route::get('/categories/{id}', function($categoryId){
     return "Categories : ". $categoryId;
@@ -60,7 +60,7 @@ Route::get('/categories/{id}', function($categoryId){
 
 Route::get('/users/{id?}', function($userId = '404'){
     return "Users : $userId";
-});
+})->name('category.detail');
 
 Route::get('/conflict/{name}', function($name){
     return "Conflict $name";
@@ -70,3 +70,11 @@ Route::get('/conflict/toni', function(){
     return "Conflict toni ramdani";
 });
 
+Route::get('/produk/{id}', function($id){
+    $link = route('product.detail', ['id' => $id]);
+    return "Link $link";
+});
+
+Route::get('/produk-redirect/{id}', function($id){
+    return redirect()->route('product.detail', ['id' => $id]);
+});
