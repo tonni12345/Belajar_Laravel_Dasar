@@ -84,3 +84,6 @@ Route::get('/produk-redirect/{id}', function($id){
 Route::get('/controller/hello/request', [\App\Http\Controllers\HelloController::class, 'request']);
 Route::get('/controller/hello/{name}', [\App\Http\Controllers\HelloController::class, 'hello']);
 
+Route::get('/input/hello', [\App\Http\Controllers\InputController::class, 'hello']);
+Route::post('/input/hello', [\App\Http\Controllers\InputController::class, 'hello']);
+
