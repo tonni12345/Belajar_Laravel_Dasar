@@ -35,4 +35,11 @@ class RountingTest extends TestCase
         $this->get('products/1/items/yyy')->assertSeeText('product 1, Item yyy');
 
     }
+
+    public function testRouteRegex(){
+        $this->get('/categories/1')->assertSeeText("Categories : 1");
+
+        $this->get('/categories/ss')->assertSeeText("404 halaman tidak ada");
+    }
+
 }
