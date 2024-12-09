@@ -16,8 +16,25 @@ class HelloController extends Controller
     }
 
 
-    public function hello(string $name):string 
+    public function hello(Request $request, string $name):string 
     {
+        // $request->url();
+        // $request->path();
+        // $request->fullUrl();
+        // $request->method();
+        // $request->isMethod();
+
+
         return $this->helloService->hello($name);
+    }
+
+    public function request(Request $request):string
+    {
+        return $request->path() . PHP_EOL . 
+               $request->url() . PHP_EOL .
+               $request->fullUrl() . PHP_EOL .
+               $request->method() . PHP_EOL .
+               $request->header('Accept'); 
+
     }
 }
