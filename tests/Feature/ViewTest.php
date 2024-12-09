@@ -20,4 +20,10 @@ class ViewTest extends TestCase
         $this->get('/hello-world')
              ->assertSeeText('World Kareen');
     }
+
+    public function testViewWithoutRoute(){
+        $this->view('hello', ['name' => 'Eko'])->assertSeeText('Hello Eko');
+
+        $this->view('hello.world', ['name' => 'Eko'])->assertSeeText('World Eko');
+    }
 }
