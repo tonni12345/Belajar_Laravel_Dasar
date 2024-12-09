@@ -87,3 +87,5 @@ Route::get('/controller/hello/{name}', [\App\Http\Controllers\HelloController::c
 Route::get('/input/hello', [\App\Http\Controllers\InputController::class, 'hello']);
 Route::post('/input/hello', [\App\Http\Controllers\InputController::class, 'hello']);
 
+Route::post('/input/hello/first', [\App\Http\Controllers\InputController::class, 'helloFirstName']);
+
