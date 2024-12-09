@@ -42,4 +42,10 @@ class RountingTest extends TestCase
         $this->get('/categories/ss')->assertSeeText("404 halaman tidak ada");
     }
 
+    public function testRouteOpsional(){
+        $this->get('/users/404')->assertSeeText('Users : 404');
+
+        $this->get('/users/toni')->assertSeeText('Users : toni');
+    }
+
 }

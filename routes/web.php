@@ -58,3 +58,7 @@ Route::get('/categories/{id}', function($categoryId){
 })->where('id', '[0-9]+'); 
 
 
+Route::get('/users/{id?}', function($userId = '404'){
+    return "Users : $userId";
+});
+
