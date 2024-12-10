@@ -11,7 +11,8 @@ class InputController extends Controller
         $name = $request->input('name'); 
         // $name = $request->query('name'); //ini buat array query param
 
-        $name = $request->name; 
+        // bisa seperti ini tpi tidak direkomendasikan
+        // $name = $request->name; 
         
 
         return "Hello " . $name;
@@ -35,5 +36,17 @@ class InputController extends Controller
         $names = $request->input("products.*.name");
 
         return json_encode($names);
+    }
+
+    public function inputType(Request $request){
+        $name = $request->input("name");
+        $married = $request->boolean("married");
+        $birthDate = $request->date('birth_date', 'Y-m-d');
+
+        return json_encode([
+            "name" => $name,
+            "married" => $married,
+            "birth_date" => $birthDate->format('Y-m-d')
+        ]);
     }
 }
