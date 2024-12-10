@@ -8,7 +8,12 @@ class InputController extends Controller
 {
     public function hello(Request $request):string
     {
-        $name = $request->input('name');
+        $name = $request->input('name'); 
+        // $name = $request->query('name'); //ini buat array query param
+
+        $name = $request->name; 
+        
+
         return "Hello " . $name;
     }
 
