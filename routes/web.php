@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\FileController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -86,18 +87,14 @@ Route::get('/controller/hello/{name}', [\App\Http\Controllers\HelloController::c
 
 Route::get('/input/hello', [\App\Http\Controllers\InputController::class, 'hello']);
 Route::post('/input/hello', [\App\Http\Controllers\InputController::class, 'hello']);
-
 Route::post('/input/hello/first', [\App\Http\Controllers\InputController::class, 'helloFirstName']);
-
 Route::post('/input/hello/input', [\App\Http\Controllers\InputController::class, 'helloInput']);
 Route::post('/input/hello/array', [\App\Http\Controllers\InputController::class, 'helloArray']);
-
 Route::post('/input/hello/array', [\App\Http\Controllers\InputController::class, 'helloArray']);
-
 Route::post('/input/type', [\App\Http\Controllers\InputController::class, 'inputType']);
-
 Route::post('/input/filter/only', [\App\Http\Controllers\InputController::class, 'filterOnly']);
 Route::post('/input/filter/except', [\App\Http\Controllers\InputController::class, 'filterExcept']);
-
 Route::post('/input/filter/merge', [\App\Http\Controllers\InputController::class, 'filterMerge']);
+
+Route::post('/file/upload', [\App\Http\Controllers\FileController::class, 'upload']);
 
