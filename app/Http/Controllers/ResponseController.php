@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Http\JsonResponse;
 
 class ResponseController extends Controller
 {
@@ -25,5 +26,20 @@ class ResponseController extends Controller
                     'Author' => 'Programmer Zaman Now',
                     'App' => 'Belajar Laravel'
                 ]);
+    }
+
+    public function responseView(Request $request): Response
+    {
+        return response()->view('hello', ['name' => 'Tonni']);
+    }
+
+    public function responseJson(Request $request): JsonResponse
+    {
+        $body = [
+            'firstName' => 'Tonni',
+            'lastName' => 'Mubaroq'
+        ];
+
+        return response()->json($body);
     }
 }
