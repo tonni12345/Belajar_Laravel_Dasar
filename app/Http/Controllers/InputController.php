@@ -64,4 +64,14 @@ class InputController extends Controller
 
         return json_encode($user);
     }
+
+    public function filterMerge(Request $request): string
+    {
+        // $request->mergeIfMissing(['admin' => false]);
+        $request->merge(['admin' => false]);
+
+        $user = $request->input();
+
+        return json_encode($user);
+    }
 }

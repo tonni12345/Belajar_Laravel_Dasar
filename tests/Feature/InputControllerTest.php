@@ -81,5 +81,12 @@ class InputControllerTest extends TestCase
             "admin" => "true"
         ])->assertSeeText("Tonni")->assertSeeText("true")->assertDontSeeText("admin");
    }
+
+   public function testFilterMerge()
+   {
+        $this->post('/input/filter/merge',[
+            "admin" => "true"
+        ])->assertSeeText("false");
+   }
    
 }
