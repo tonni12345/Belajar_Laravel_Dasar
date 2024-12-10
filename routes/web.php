@@ -95,3 +95,7 @@ Route::post('/input/hello/array', [\App\Http\Controllers\InputController::class,
 Route::post('/input/hello/array', [\App\Http\Controllers\InputController::class, 'helloArray']);
 
 Route::post('/input/type', [\App\Http\Controllers\InputController::class, 'inputType']);
+
+Route::post('/input/filter/only', [\App\Http\Controllers\InputController::class, 'filterOnly']);
+Route::post('/input/filter/except', [\App\Http\Controllers\InputController::class, 'filterExcept']);
+
