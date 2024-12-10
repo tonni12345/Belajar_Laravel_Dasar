@@ -21,8 +21,14 @@ class InputController extends Controller
 
     public function helloInput(Request $request): string
     {
-        $input = $request->input(); // method input tanpa parameter
+        $input = $request->input(); // method input tanpa parameter mengambil semua request yang ada
 
         return json_encode($input);
+    }
+
+    public function helloArray(Request $request): string {
+        $names = $request->input("products.*.name");
+
+        return json_encode($names);
     }
 }
