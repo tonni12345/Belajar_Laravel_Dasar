@@ -11,12 +11,12 @@ class FileControllerTest extends TestCase
 {
    public function testUpload()
    {
-        // masih error
+        //masih error
 
-        // $picture = UploadedFile::fake()->image("tonni.png");
+      //   $picture = UploadedFile::fake()->image("tonni.png");
 
-        // $this->post('/file/upload', [
-        //     "picture" => $picture
-        // ]);
+      //   $this->post('/file/upload', [
+      //       "picture" => $picture
+      //   ]);
    }
 }
