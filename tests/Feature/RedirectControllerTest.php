@@ -4,6 +4,7 @@ namespace Tests\Feature;
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
+use Illuminate\Http\RedirectResponse;
 use Tests\TestCase;
 
 class RedirectControllerTest extends TestCase
@@ -17,4 +18,11 @@ class RedirectControllerTest extends TestCase
     {
         $this->get('/redirect/name')->assertRedirect('/redirect/name/Tonni');
     }
+
+    public function testRedirectAction()
+    {
+        $this->get('/redirect/action')->assertRedirect('/redirect/name/Nadyra');
+    }
+
+   
 }

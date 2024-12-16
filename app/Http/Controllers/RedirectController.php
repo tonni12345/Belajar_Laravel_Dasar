@@ -26,4 +26,9 @@ class RedirectController extends Controller
     {
         return "Hello $name";
     }
+
+    public function redirectAction(): RedirectResponse
+    {
+        return redirect()->action([RedirectController::class, 'redirectHello'], ['name' => 'Nadyra']);
+    }
 }
