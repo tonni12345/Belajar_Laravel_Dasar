@@ -30,7 +30,7 @@ class Kernel extends HttpKernel
      */
     protected $middlewareGroups = [
         'pzn' => [
-            \App\Http\Middleware\ContohMiddleware::class
+            'contoh:PZN,401'
         ],
         'web' => [
             \App\Http\Middleware\EncryptCookies::class,

@@ -14,13 +14,13 @@ class ContohMiddleware
      * @param  \Closure(\Illuminate\Http\Request): (\Illuminate\Http\Response|\Illuminate\Http\RedirectResponse)  $next
      * @return \Illuminate\Http\Response|\Illuminate\Http\RedirectResponse
      */
-    public function handle(Request $request, Closure $next)
+    public function handle(Request $request, Closure $next, string $key, $status)
     {
         $apiKey = $request->header('X-API-KEY');
-        if ($apiKey == 'PZN'){
+        if ($apiKey == $key){
             return $next($request);
         } else {
-            return response('Access Denied', 401);
+            return response('Access Denied', $status);
         }
     }
 }
