@@ -120,3 +120,7 @@ Route::get('/redirect/pzn', [\App\Http\Controllers\RedirectController::class, 'r
 Route::get('/middleware/api', function(){
     return "Ok";
 })->middleware(['contoh']);
+
+Route::get('/middleware/group', function(){
+    return "GROUP";
+})->middleware(['pzn']);

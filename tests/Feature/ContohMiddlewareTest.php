@@ -17,4 +17,14 @@ class ContohMiddlewareTest extends TestCase
     {
         $this->withHeader('X-API-KEY', 'PZN')->get('/middleware/api')->assertStatus(200)->assertSeeText('Ok');
     }
+
+    public function testInvalidGroup()
+    {
+        $this->get('/middleware/group')->assertStatus(401)->assertSeeText('Access Denied');
+    }
+
+    public function testValidGroup()
+    {
+        $this->withHeader('X-API-KEY', 'PZN')->get('/middleware/group')->assertStatus(200)->assertSeeText('GROUP');
+    }
 }
