@@ -102,10 +102,14 @@ Route::post('/file/upload', [\App\Http\Controllers\FileController::class, 'uploa
 Route::get('/response/hello', [\App\Http\Controllers\ResponseController::class, 'response']);
 Route::get('/response/header', [\App\Http\Controllers\ResponseController::class, 'header']);
 
-Route::get('/response/type/view', [\App\Http\Controllers\ResponseController::class, 'responseView']);
-Route::get('/response/type/json', [\App\Http\Controllers\ResponseController::class, 'responseJson']);
-Route::get('/response/type/file', [\App\Http\Controllers\ResponseController::class, 'responseFile']);
-Route::get('/response/type/download', [\App\Http\Controllers\ResponseController::class, 'responseDownload']);
+Route::prefix("/response/type")->group(function(){
+    Route::get('/view', [\App\Http\Controllers\ResponseController::class, 'responseView']);
+    Route::get('/json', [\App\Http\Controllers\ResponseController::class, 'responseJson']);
+    Route::get('/file', [\App\Http\Controllers\ResponseController::class, 'responseFile']);
+    Route::get('/download', [\App\Http\Controllers\ResponseController::class, 'responseDownload']);
+});
+
+
 
 Route::get('/cookie/set', [\App\Http\Controllers\CookieController::class, 'createCookie']);
 Route::get('/cookie/get', [\App\Http\Controllers\CookieController::class, 'getCookie']);
