@@ -102,6 +102,7 @@ Route::post('/file/upload', [\App\Http\Controllers\FileController::class, 'uploa
 Route::get('/response/hello', [\App\Http\Controllers\ResponseController::class, 'response']);
 Route::get('/response/header', [\App\Http\Controllers\ResponseController::class, 'header']);
 
+// route group
 Route::prefix("/response/type")->group(function(){
     Route::get('/view', [\App\Http\Controllers\ResponseController::class, 'responseView']);
     Route::get('/json', [\App\Http\Controllers\ResponseController::class, 'responseJson']);
@@ -109,7 +110,11 @@ Route::prefix("/response/type")->group(function(){
     Route::get('/download', [\App\Http\Controllers\ResponseController::class, 'responseDownload']);
 });
 
-
+// satu satu
+// Route::get('/response/type/view', [\App\Http\Controllers\ResponseController::class, 'responseView']);
+// Route::get('/response/type/json', [\App\Http\Controllers\ResponseController::class, 'responseJson']);
+// Route::get('/response/type/file', [\App\Http\Controllers\ResponseController::class, 'responseFile']);
+// Route::get('/response/type/download', [\App\Http\Controllers\ResponseController::class, 'responseDownload']);
 
 Route::get('/cookie/set', [\App\Http\Controllers\CookieController::class, 'createCookie']);
 Route::get('/cookie/get', [\App\Http\Controllers\CookieController::class, 'getCookie']);
@@ -122,13 +127,24 @@ Route::get('redirect/name/{name}', [\App\Http\Controllers\RedirectController::cl
 Route::get('/redirect/action', [\App\Http\Controllers\RedirectController::class, 'redirectAction']);
 Route::get('/redirect/pzn', [\App\Http\Controllers\RedirectController::class, 'redirectAway']);
 
-Route::get('/middleware/api', function(){
-    return "Ok";
-})->middleware(['contoh:PZN,401']);
+// middleware group
+Route::middleware(['contoh:PZN,401'])->group(function(){
+    Route::get('/middleware/api', function(){
+        return "Ok";
+    });   
+    Route::get('/middleware/group', function(){
+        return "GROUP";
+    });
+});
 
-Route::get('/middleware/group', function(){
-    return "GROUP";
-})->middleware(['pzn']);
+// satu satu
+// Route::get('/middleware/api', function(){
+//     return "Ok";
+// })->middleware(['contoh:PZN,401']);
+
+// Route::get('/middleware/group', function(){
+//     return "GROUP";
+// })->middleware(['pzn']);
 
 
 Route::get('/form', [\App\Http\Controllers\FormController::class, 'form']);
