@@ -158,3 +158,10 @@ Route::middleware(['contoh:PZN,401'])->prefix('/middleware')->group(function(){
 
 Route::get('/form', [\App\Http\Controllers\FormController::class, 'form']);
 Route::post('/form', [\App\Http\Controllers\FormController::class, 'submitForm']);
+
+Route::get('/url/current', function(){
+    return \Illuminate\Support\Facades\URL::full();
+
+    // bisa kayak gini
+    // url()->current();
+});
