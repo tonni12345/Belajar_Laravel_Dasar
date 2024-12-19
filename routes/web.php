@@ -173,3 +173,5 @@ Route::get('/url/named', function(){
 Route::get('/url/action', function(){
     return action([\App\Http\Controllers\FormController::class, 'form'], []);
 });
+
+Route::get('/session/create', [\App\Http\Controllers\SessionController::class, 'createSession']);
