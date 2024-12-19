@@ -136,12 +136,12 @@ Route::get('redirect/name/{name}', [\App\Http\Controllers\RedirectController::cl
 Route::get('/redirect/action', [\App\Http\Controllers\RedirectController::class, 'redirectAction']);
 Route::get('/redirect/pzn', [\App\Http\Controllers\RedirectController::class, 'redirectAway']);
 
-// middleware group
-Route::middleware(['contoh:PZN,401'])->group(function(){
-    Route::get('/middleware/api', function(){
+// middleware group multiple route group
+Route::middleware(['contoh:PZN,401'])->prefix('/middleware')->group(function(){
+    Route::get('/api', function(){
         return "Ok";
     });   
-    Route::get('/middleware/group', function(){
+    Route::get('/group', function(){
         return "GROUP";
     });
 });
