@@ -169,3 +169,7 @@ Route::get('/url/current', function(){
 Route::get('/url/named', function(){
     return route('redirect-hello', ['name' => 'Tonni']);
 });
+
+Route::get('/url/action', function(){
+    return action([\App\Http\Controllers\FormController::class, 'form'], []);
+});

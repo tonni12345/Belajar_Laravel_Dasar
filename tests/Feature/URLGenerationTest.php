@@ -17,4 +17,8 @@ class URLGenerationTest extends TestCase
     {
         $this->get('/url/named')->assertSeeText('/redirect/name/Tonni');
     }
+
+    public function testAction(){
+        $this->get('/url/action')->assertSeeText('/form');
+    }
 }
