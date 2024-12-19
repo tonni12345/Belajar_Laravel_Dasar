@@ -165,3 +165,7 @@ Route::get('/url/current', function(){
     // bisa kayak gini
     // url()->current();
 });
+
+Route::get('/url/named', function(){
+    return route('redirect-hello', ['name' => 'Tonni']);
+});
