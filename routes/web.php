@@ -181,3 +181,8 @@ Route::get('/session/get', [\App\Http\Controllers\SessionController::class, 'get
 Route::get('/error/sample', function(){
     throw new Exception('Sample Error');
 });
+
+Route::get('/error/manual', function(){
+    report(new Exception("Sample Error"));
+    return "OK";
+});
