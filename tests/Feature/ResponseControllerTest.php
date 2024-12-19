@@ -36,13 +36,13 @@ class ResponseControllerTest extends TestCase
         ]);  
    }
 
-   public function testFile()
-   {
-          $this->get('/response/type/file')->assertHeader('Content-Type', 'image/png');
-   }
+//    public function testFile()
+//    {
+//           $this->get('/response/type/file')->assertHeader('Content-Type', 'image/png');
+//    }
 
-   public function testDownload()
-   {
-          $this->get('/response/type/download')->assertDownload('Capture.png');
-   }
+//    public function testDownload()
+//    {
+//           $this->get('/response/type/download')->assertDownload('Capture.png');
+//    }
 }

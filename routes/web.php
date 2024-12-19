@@ -116,9 +116,18 @@ Route::prefix("/response/type")->group(function(){
 // Route::get('/response/type/file', [\App\Http\Controllers\ResponseController::class, 'responseFile']);
 // Route::get('/response/type/download', [\App\Http\Controllers\ResponseController::class, 'responseDownload']);
 
-Route::get('/cookie/set', [\App\Http\Controllers\CookieController::class, 'createCookie']);
-Route::get('/cookie/get', [\App\Http\Controllers\CookieController::class, 'getCookie']);
-Route::get('/cookie/clear', [\App\Http\Controllers\CookieController::class, 'clearCookie']);
+
+// route controller
+Route::controller(\App\Http\Controllers\CookieController::class)->group(function(){
+    Route::get('/cookie/set', 'createCookie');
+    Route::get('/cookie/get', 'getCookie');
+    Route::get('/cookie/clear', 'clearCookie');
+});
+
+
+// Route::get('/cookie/set', [\App\Http\Controllers\CookieController::class, 'createCookie']);
+// Route::get('/cookie/get', [\App\Http\Controllers\CookieController::class, 'getCookie']);
+// Route::get('/cookie/clear', [\App\Http\Controllers\CookieController::class, 'clearCookie']);
 
 Route::get('/redirect/from', [\App\Http\Controllers\RedirectController::class, 'redirectFrom']);
 Route::get('/redirect/to', [\App\Http\Controllers\RedirectController::class, 'redirectTo']);
