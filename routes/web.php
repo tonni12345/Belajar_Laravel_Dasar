@@ -175,3 +175,5 @@ Route::get('/url/action', function(){
 });
 
 Route::get('/session/create', [\App\Http\Controllers\SessionController::class, 'createSession']);
+
+Route::get('/session/get', [\App\Http\Controllers\SessionController::class, 'getSession']);

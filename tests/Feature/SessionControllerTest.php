@@ -14,4 +14,12 @@ class SessionControllerTest extends TestCase
              ->assertSessionHas('userId', 'Tonni')
              ->assertSessionHas('isMember', 'true');
     }
+
+    public function testGetSession()
+    {
+        $this->withSession([
+            'userId' => 'Tonni',
+            'isMember' => 'true'
+        ])->get('/session/get')->assertSeeText('Tonni')->assertSeeText('true');
+    }
 }
